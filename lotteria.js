@@ -470,6 +470,7 @@ window.addEventListener('load',function(){
 	document.querySelector('#openListSort').disabled=true;
 });
 
+
 window.onbeforeunload = function(){
    			return '0';
 
