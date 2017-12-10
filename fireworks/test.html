@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Fireworks.js: A DHTML fireworks effect</title>
+<meta name="author" content="Scott Schiller" />
+<meta name="language" content="en-us" />
+<meta name="keywords" content="Fireworks.js DHTML animated fireworks effect free animation script" />
+<meta name="description" content="Project page for Fireworks, a fun and downloadable javascript-driven animated fireworks experiment." />
+<link rel="stylesheet" type="text/css" href="style/fireworks.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="demo-only/demo.css" media="screen" />
+<script type="text/javascript" src="demo-only/demo.js"></script>
+<!--script type="text/javascript" src="script/debug.js"></script-->
+<script type="text/javascript" src="script/soundmanager2-nodebug-jsmin.js"></script>
+<script type="text/javascript" src="script/fireworks.js"></script>
+</head>
+
+<body>
+
+<div id="fireworks-template">
+ <div id="fw" class="firework"></div>
+ <div id="fp" class="fireworkParticle"><img src="image/particles.gif" alt="" /></div>
+</div>
+
+<div id="fireContainer"></div>
+
+ <div id="fireButton">
+  <div id="fireIE"></div>
+  <a href="#" onclick="createFirework(25,187,5,1,null,null,null,null,false,true);this.blur();return false" class="content">Fire!</a>
+ </div>

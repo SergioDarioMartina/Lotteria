@@ -1,0 +1,160 @@
+<!doctype html>
+<!--
+Data creazione 17.12.2016
+Ultima modifica 03.12.2017
+-->
+<html lang='it'> 
+<head>
+  <meta charset="utf-8"> 
+<meta name="author" content="Martina Sergio">
+<meta name="copyright" content="Lotteria">	
+  <title>Lotteria</title>
+<script type="text/javascript" src="lotteria.js"></script>
+<link rel="stylesheet" type="text/css" href="lotteria.css">
+<!--fuochi-->
+<link rel="stylesheet" type="text/css" href="fireworks/style/fireworks.css" media="screen" />
+<script type="text/javascript" src="fireworks/demo-only/demo.js"></script>
+<!--script type="text/javascript" src="script/debug.js"></script-->
+<script type="text/javascript" src="fireworks/script/soundmanager2-nodebug-jsmin.js"></script>
+<script type="text/javascript" src="fireworks/script/fireworks.js"></script>
+<!--fuochi-->
+
+</head> 
+<body>
+<!--fuochi-->
+<div id="fireworks-template">
+ <div id="fw" class="firework"></div>
+ <div id="fp" class="fireworkParticle"><img src="fireworks/image/particles.gif" alt="" /></div>
+</div>
+
+<div id="fireContainer"></div>
+<!--fuochi-->
+
+
+<div id="control" title="tasto F2">
+
+</div>
+<div id="menu">
+	Men&ugrave;
+  <ul>
+   
+	<li><button id="recove">Recupera ultima sessione</button></li>
+	<li><button id="reloadPage">Nuova estrazione</button></li>
+	<li><button id="openList" disabled="disabled">Apri lista premi</button></li>
+	<li><button id="openListSort" disabled="disabled">Apri lista ordinata</button></li>
+  </ul>
+</div>
+  <div id="logo" class="col8">
+   Lotteria by Gruppo Sportivo Verallia Lonigo
+  </div>
+
+<header id="header">
+	<table>
+        	<th id="titolo" colspan="2">Impostazioni iniziali</th>
+	<tr>
+	  <td>
+		Numero di biglietti venduti
+	  </td>
+	  <td>
+		Numero di premi
+	  </td>
+	 </tr>
+	 <tr>
+	  <td>
+      		<input type="text" id="max" value="100">
+	 </td>
+	 
+	  <td>
+		<input type="text" id="premi" value="10">
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+		Inserisci la lista dei premi
+	  </td>
+	  <td>
+		Numeri nulli
+	  </td>
+	 </tr>
+	 <tr>
+	  <td>
+		 <textarea cols="" rows="15" id="listaPremi"></textarea>
+	  </td>
+	  <td>
+		 <textarea cols="" rows="15" id="numeriNulli"></textarea>
+	  </td>
+	</tr>
+	<tr>
+	  <td colspan="2">
+		<button type="button" id="estraiTutti">
+		Estrai tutto 
+		</button>
+	  </td>
+	 </tr>
+	 <tr>
+	  <!--<td>
+		<button type="button" id="recove" disabled='disabled'>
+		Recupera ultima sessione 
+		</button>
+	  </td>-->
+	  
+	</tr>
+	</table>
+</header>
+   <!-- <label>Cosa hai in mente?
+      <textarea name="testo_da_ricordare" required autofocus
+      placeholder="La lista della spesa, il teatro di questa sera ..."></textarea> 
+    </label>
+  -->
+<div id="corpo" style="display:none;height:100%">
+<div id="primiPremi">
+	<div>
+	  <div class="lista primiPremi">
+	     <div class="primi">1°) <span class="first" id="primoN">****</span></div>
+	      <div id="primoP" class="inLista"></div>
+	  </div>
+	</div>
+	<div>
+	  <div class="lista primiPremi">
+	    <div class="primi">2°) <span class="first"  id="secondoN">****</span></div>
+	    <div id="secondoP" class="inLista"></div>
+	  </div>
+	</div>
+
+	<div>
+	  <div class="lista primiPremi">
+	    <div class="primi">3°) <span class="first"  id="terzoN">****</span></div>
+	    <div id="terzoP" class="inLista"></div>
+	  </div>
+	</div>
+</div>
+
+<div style="width:100%;padding:20px 0">
+	<!--<button type="button" id="estr" class="pag2">
+		Premio successivo
+	</button>
+	<button type="button" id="reloadPage" class="pag2">
+		Nuova estrazione
+	</button>
+	<button type="button" id="openList" class="pag2">
+		Apri lista premi
+	</button>
+	<button type="button" id="openListSort" class="pag2">
+		Apri lista ordinata
+	</button>-->
+<!--	
+	<button type="button" id="set">
+		Modifica impostazioni
+	</button>
+-->
+</div>
+	<div id="panel" class="panel col6">
+		0
+	</div>
+	<div id="estratti" class="col12">
+		<ul id="list">
+		</ul>
+	</div>
+</div>
+</body> 
+</html>
