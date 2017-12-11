@@ -8,5 +8,6 @@ il programma estrarrà tutti i numeri e mostrerà solo i primi tre premi con il 
 Ad ogni click il programma mostrerà i numeri ed il relativo premio, dall'ultimo in poi sino ad arrivare ai primi tre premi.
 Il numero finale sarà visualizzato e festeggiato da fuochi d'artificio.
 
+## Salvataggio dati
 Il programma prevede un salvataggio sulla local storage del browser web ad ogni numero estratto in modo da riprendere da dove si è arrivati in caso di blackout o uscita accidentale, alla fine dell'estrazione dal menù si potrà accedere alla lista dei premi e numeri estratti per ordine di premio o per ordine di biglietto estratto.
 Effetti sonori ed animazioni pensata per il divertimento dei più piccoli.
