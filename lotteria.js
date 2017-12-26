@@ -185,11 +185,21 @@ function in_array(el,arr) {
 			document.querySelector('#openListSort').disabled=false;
 		}
 		if(index<3){
+			
 			var primiPremi=document.querySelectorAll(".first");
+			var primiPremiTxt=document.querySelectorAll(".firstTxt");
 			primiPremi[index].innerText=lista[index];
 			primiPremi[index].parentNode.parentNode.style.background='red';
 			//primiPremi[index].parentNode.style.height='250px';
 			primiPremi[index].parentNode.parentNode.style.paddingTop='60px';
+			
+			if(primiPremiTxt[index+1]){
+				primiPremiTxt[index+1].classList.remove('blinking');
+			}
+			primiPremiTxt[index].classList.add('blinking');
+			//document.querySelector('#list').firstChild.querySelector('div').className='inLista';
+
+
 		}else{
 			var newItem = document.createElement("LI");
 			newItem.classList.add('lista');
@@ -201,15 +211,15 @@ function in_array(el,arr) {
 			numPremio.appendChild(document.createTextNode(lista[index]+" "));
     			//var numList=document.createTextNode((parseInt(index)+1)+'°)  '+lista[index]+" ");
 			//newItem.appendChild(numList);
-			var span = document.createElement("div");
-			span.classList.add('inLista');
+			var premioDiv = document.createElement("div");
+			premioDiv.classList.add('inLista');
 			var premioLista=document.createTextNode(listaPremiArray[index]);//.substr(0,80));
-			span.appendChild(premioLista);
+			premioDiv.appendChild(premioLista);
 			newItem.appendChild(parentesi);
 			newItem.appendChild(numPremio);
-			newItem.appendChild(span);
+			newItem.appendChild(premioDiv);
 			document.querySelector('#list').insertBefore(newItem,document.querySelector('#list').firstChild);
-			var plin = new Audio("audio/plinPlon.wav");
+			var plin = new Audio("audio/notification.wav");
 			plin.play();
 
 		}
@@ -222,9 +232,13 @@ function in_array(el,arr) {
 		setTimeout(function () { 
 			panel.classList.remove('panelTemp');
 			panel.style.opacity='0';
-			for(var u=0;u<lis.length;u++){
-				lis[u].classList.remove('liFirst');
-			}
+			//for(var u=0;u<lis.length;u++){
+				lis[0].classList.remove('liFirst');
+				if(lis[1]){
+					lis[1].querySelector('div').classList.remove('blinking');
+				}
+				lis[0].querySelector('div').classList.add('blinking');
+			//}
 			/*for(prop in lis) {
 	 			
 				try {
@@ -240,6 +254,7 @@ function in_array(el,arr) {
 		setTimeout(function () { 
 			panel.style.display='none';
 		}, 2500);
+
 		index--;
 		localStorage.setItem('index',index); 
 		setTimeout(function(){enabledExtraction(1);},8000);
@@ -469,7 +484,6 @@ window.addEventListener('load',function(){
 	document.querySelector('#openList').disabled=true;
 	document.querySelector('#openListSort').disabled=true;
 });
-
 
 window.onbeforeunload = function(){
    			return '0';
