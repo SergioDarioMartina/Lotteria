@@ -315,4 +315,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', e
     -o-transition: width 8s ease-in-out;
     transition: width 8s ease-in-out;
 }
-/*fine cursore */
+/*fine cursore*/
+
+/*animazione blink*/
+
+.blinking{
+z-index:0;
+color: #F9FD0C;
+animation: blink 1s linear infinite;
+    -webkit-animation-name: blink; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    animation-name: blink;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: 7;
+    animation-iteration-count: 7;
+}
+@keyframes blink{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}
+@-webkit-keyframes blink {
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}
+
+
