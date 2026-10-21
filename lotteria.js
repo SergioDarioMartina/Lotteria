@@ -238,10 +238,12 @@ function randomIndex(maxExclusive) {
 			//primiPremi[index].parentNode.style.height='250px';
 			primiPremi[index].parentNode.parentNode.style.paddingTop='60px';
 			
-			if(primiPremiTxt[index+1]){
-				primiPremiTxt[index+1].classList.remove('blinking');
+			if(primiPremiTxt[index]){
+				if(primiPremiTxt[index+1]){
+					primiPremiTxt[index+1].classList.remove('blinking');
+				}
+				primiPremiTxt[index].classList.add('blinking');
 			}
-			primiPremiTxt[index].classList.add('blinking');
 			//document.querySelector('#list').firstChild.querySelector('div').className='inLista';
 
 
