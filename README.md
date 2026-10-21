@@ -14,7 +14,7 @@ Dalla schermata iniziale puoi cambiare l'intestazione mostrata nel programma e c
 
 1. In **Numero di biglietti venduti** inserisci un numero intero da 1 a 15.000. I biglietti sono numerati da 1 fino al numero indicato.
 2. In **Numero di premi** indica quanti premi vuoi assegnare.
-3. Inserisci la **lista dei premi**, un premio per riga e nell'ordine desiderato. Il numero di righe deve corrispondere al numero dei premi; non aggiungere righe vuote alla fine.
+3. Inserisci la **lista dei premi**, un premio per riga e nell'ordine desiderato. Le righe vuote o composte solo da spazi vengono rimosse automaticamente.
 4. Se vuoi escludere biglietti, ad esempio perché invenduti, scrivi i loro numeri in **Numeri nulli**, uno per riga. Sono considerate valide solo le esclusioni che sono numeri interi compresi tra 1 e il totale dei biglietti; i duplicati vengono contati una volta sola.
 
 Il programma avvisa se, dopo le esclusioni, non ci sono abbastanza biglietti disponibili per tutti i premi.

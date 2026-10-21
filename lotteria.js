@@ -8,6 +8,15 @@ function in_array(el,arr) {
 	return false;
 }
 
+function normalizzaListaPremi() {
+	var listaPremi = document.querySelector('#listaPremi');
+	var premi = listaPremi.value.split(/\r?\n/).filter(function (riga) {
+		return riga.trim().length > 0;
+	});
+	listaPremi.value = premi.join('\n');
+	return premi;
+}
+
 function randomIndex(maxExclusive) {
 	var cryptoSource = window.crypto;
 	if (cryptoSource && cryptoSource.getRandomValues && typeof Uint32Array !== 'undefined') {
@@ -76,9 +85,8 @@ function randomIndex(maxExclusive) {
 			return;
 		}
 		var local={};
-		var listaPremi=document.getElementById('listaPremi');
 		var numeriNulli=document.getElementById('numeriNulli');
-		listaPremiArray = listaPremi.value.split("\n");
+		listaPremiArray = normalizzaListaPremi();
 		listaNumeriNulli = numeriNulli.value.split("\n").map(Number);
 		console.log(listaNumeriNulli);
 		//console.log(typeof listaNumeriNulli[0]);
@@ -520,6 +528,7 @@ window.addEventListener('load',function(){
 	}
 
 	document.querySelector('#estraiTutti').addEventListener('click',estraiTutti);
+	document.querySelector('#listaPremi').addEventListener('blur',normalizzaListaPremi);
 	document.querySelector('#reloadPage').addEventListener('click',function(){location.reload();});
 	document.querySelector('#openInstructions').addEventListener('click',function(){
 		window.open('Istruzioni.html','_blank');
