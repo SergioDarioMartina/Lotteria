@@ -10,6 +10,8 @@ Scarica o clona il repository e apri `Lotteria.html` con un browser aggiornato. 
 
 ## Preparare l'estrazione
 
+Dalla schermata iniziale puoi cambiare l'intestazione mostrata nel programma e caricare un logo dell'evento in formato PNG, JPEG o WebP (massimo 5 MB). Il programma ridimensiona il logo entro 60×60 pixel e rifiuta PDF, documenti Word e altri file non immagine. Intestazione e logo restano nella sessione corrente del browser; le istruzioni aperte dal menù mostrano la stessa personalizzazione.
+
 1. In **Numero di biglietti venduti** inserisci un numero intero da 1 a 15.000. I biglietti sono numerati da 1 fino al numero indicato.
 2. In **Numero di premi** indica quanti premi vuoi assegnare.
 3. Inserisci la **lista dei premi**, un premio per riga e nell'ordine desiderato. Il numero di righe deve corrispondere al numero dei premi; non aggiungere righe vuote alla fine.

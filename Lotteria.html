@@ -11,6 +11,7 @@ Ultima modifica 03.12.2017
 <meta name="copyright" content="Lotteria">	
   <title>Lotteria</title>
 <script type="text/javascript" src="lotteria.js"></script>
+<script defer type="text/javascript" src="branding.js"></script>
 <link rel="stylesheet" type="text/css" href="lotteria.css">
 <!--fuochi-->
 <link rel="stylesheet" type="text/css" href="fireworks/style/fireworks.css" media="screen" />
@@ -45,13 +46,30 @@ Ultima modifica 03.12.2017
 	<li><button id="openInstructions">Istruzioni</button></li>
   </ul>
 </div>
-  <div id="logo" class="col8">
-   Lotteria by Gruppo Sportivo Verallia Lonigo
+  <div id="brandHeader">
+	<img id="brandLogo" class="brandImage" data-brand-logo alt="Logo dell'evento" hidden>
+	<div id="logo" class="col8"><span data-brand-title>Lotteria by Gruppo Sportivo Verallia Lonigo</span></div>
   </div>
 
 <header id="header">
 	<table>
         	<th id="titolo" colspan="2">Impostazioni iniziali</th>
+	<tr>
+	  <td colspan="2" class="brandSettings">
+		<label for="brandTitleInput">Intestazione da mostrare</label>
+		<input type="text" id="brandTitleInput" value="Lotteria by Gruppo Sportivo Verallia Lonigo" maxlength="120">
+	  </td>
+	</tr>
+	<tr>
+	  <td colspan="2" class="brandSettings">
+		<label for="brandLogoInput">Logo dell'evento (facoltativo; PNG, JPEG o WebP, massimo 5 MB; ridimensionato entro 60×60 pixel)</label>
+		<div class="brandLogoControls">
+		  <input type="file" id="brandLogoInput" accept="image/png,image/jpeg,image/webp">
+		  <button type="button" id="removeBrandLogo">Rimuovi logo</button>
+		  <img id="brandLogoPreview" class="brandImage brandPreview" alt="Anteprima del logo" hidden>
+		</div>
+	  </td>
+	</tr>
 	<tr>
 	  <td>
 		Numero di biglietti venduti
