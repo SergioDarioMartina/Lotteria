@@ -16,7 +16,6 @@ Ultima modifica 03.12.2017
 <link rel="stylesheet" type="text/css" href="fireworks/style/fireworks.css" media="screen" />
 <script type="text/javascript" src="fireworks/demo-only/demo.js"></script>
 <!--script type="text/javascript" src="script/debug.js"></script-->
-<script type="text/javascript" src="fireworks/script/soundmanager2-nodebug-jsmin.js"></script>
 <script type="text/javascript" src="fireworks/script/fireworks.js"></script>
 <!--fuochi-->
 
@@ -43,6 +42,7 @@ Ultima modifica 03.12.2017
 	<li><button id="reloadPage">Nuova estrazione</button></li>
 	<li><button id="openList" disabled="disabled">Apri lista premi</button></li>
 	<li><button id="openListSort" disabled="disabled">Apri lista ordinata</button></li>
+	<li><button id="openInstructions">Istruzioni</button></li>
   </ul>
 </div>
   <div id="logo" class="col8">
@@ -62,11 +62,11 @@ Ultima modifica 03.12.2017
 	 </tr>
 	 <tr>
 	  <td>
-      		<input type="text" id="max" value="100">
+		<input type="number" id="max" value="100" min="1" max="15000" step="1">
 	 </td>
 	 
 	  <td>
-		<input type="text" id="premi" value="10">
+		<input type="number" id="premi" value="10" min="1" step="1">
 	  </td>
 	</tr>
 	<tr>

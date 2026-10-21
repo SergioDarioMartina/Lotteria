@@ -8,6 +8,24 @@ function in_array(el,arr) {
 	return false;
 }
 
+function randomIndex(maxExclusive) {
+	var cryptoSource = window.crypto;
+	if (cryptoSource && cryptoSource.getRandomValues && typeof Uint32Array !== 'undefined') {
+		var randomValue = new Uint32Array(1);
+		var range = 4294967296;
+		var limit = Math.floor(range / maxExclusive) * maxExclusive;
+		try {
+			do {
+				cryptoSource.getRandomValues(randomValue);
+			} while (randomValue[0] >= limit);
+			return randomValue[0] % maxExclusive;
+		} catch (error) {
+			// Mantiene l'estrazione utilizzabile nei browser che non espongono Crypto correttamente.
+		}
+	}
+	return Math.floor(Math.random() * maxExclusive);
+}
+
 	function createBar(){
 
 	this.bar=function(){
@@ -45,9 +63,18 @@ function in_array(el,arr) {
 	function estraiTutti(){
 		index=0;
 		maxForm=document.querySelector("#max");
-		maxVal=parseInt((maxForm.value>0)?maxForm.value:5000);
 		premi=document.querySelector("#premi");
-		var premiVal=parseInt(premi.value);
+		maxVal=Number(maxForm.value);
+		var premiVal=Number(premi.value);
+		if (!Number.isSafeInteger(maxVal) || maxVal < 1 ||
+			!Number.isSafeInteger(premiVal) || premiVal < 1) {
+			alert("Inserisci un numero intero positivo per i biglietti venduti e per i premi.");
+			return;
+		}
+		if (maxVal > 15000) {
+			alert("Il numero massimo di biglietti venduti è 15.000.");
+			return;
+		}
 		var local={};
 		var listaPremi=document.getElementById('listaPremi');
 		var numeriNulli=document.getElementById('numeriNulli');
@@ -58,7 +85,7 @@ function in_array(el,arr) {
 		//console.log("Numero lista premi: "+listaPremiArray.length);
 		//console.log("Numero premi: "+premi.value);
 		if(listaPremiArray.length!=premiVal){
-			alert("E' necessario indicare un numero di premi uguare alla lista dei premi!! "); 
+			alert("E' necessario indicare un numero di premi uguale alla lista dei premi!! ");
 			return;
 		}
 		//console.log(typeof premiVal);
@@ -69,39 +96,54 @@ function in_array(el,arr) {
 		}
 
 
-		if(maxVal=="" || premiVal==""){
-			alert("E' necessario indicare il numero dei biglietti venduti e dei premi"); 
+		var numeriNulliValidi = [];
+		var numeriEsclusi = [];
+		for (var n = 0; n < listaNumeriNulli.length; n++) {
+			var numeroEscluso = listaNumeriNulli[n];
+			if (numeroEscluso >= 1 && numeroEscluso <= maxVal &&
+				Math.floor(numeroEscluso) === numeroEscluso &&
+				!numeriEsclusi[numeroEscluso]) {
+				numeriNulliValidi.push(numeroEscluso);
+				numeriEsclusi[numeroEscluso] = true;
+			}
+		}
+
+		var bigliettiDisponibili = maxVal - numeriNulliValidi.length;
+		if (premiVal > bigliettiDisponibili) {
+			alert("I premi richiesti (" + premiVal + ") superano i biglietti disponibili dopo le esclusioni (" + bigliettiDisponibili + "). Riduci il numero dei premi o modifica i numeri esclusi.");
 			return;
 		}
+
+		// Evita di avviare più estrazioni se si fa doppio clic durante la barra di avanzamento.
+		document.querySelector("#estraiTutti").removeEventListener("click", estraiTutti);
+		document.querySelector("#estraiTutti").disabled=true;
 		document.querySelector("#header").style.display='none';
 		createBar=new createBar();
 		createBar.cursorBody();
 		setTimeout(function(){
 		
-		
-		
-		//console.log("Biglietti venduti: "+maxVal);
-		//console.log("numero premi: "+premi.value);
-		for(var i=0;i<premiVal;i++){
-			var num=Math.floor((Math.random() * maxVal) + 1);
-			if(lista.indexOf(num)>-1){
-				premiVal++;
-				//console.log('Ho scartato '+num+' gia\' uscito!');
-				continue;
+		// Crea il contenitore dei biglietti validi una volta sola.
+		var numeriDisponibili = [];
+		for (var numero = 1; numero <= maxVal; numero++) {
+			if (!numeriEsclusi[numero]) {
+				numeriDisponibili.push(numero);
 			}
-			if(in_array(num,listaNumeriNulli)){
-				premiVal++;
-				console.log('Ho scartato '+num+' compreso tra i numeri nulli!');
-				continue;
-			}
-			lista.push(num);
+		}
+
+		// Fisher-Yates parziale: ogni estrazione sposta il biglietto scelto fuori
+		// dall'area ancora estraibile, quindi non può uscire una seconda volta.
+		lista = [];
+		for (var i = 0; i < premiVal; i++) {
+			var indiceCasuale = i + randomIndex(numeriDisponibili.length - i);
+			var numeroEstratto = numeriDisponibili[indiceCasuale];
+			numeriDisponibili[indiceCasuale] = numeriDisponibili[i];
+			numeriDisponibili[i] = numeroEstratto;
+			lista.push(numeroEstratto);
 		}
 
 		index=lista.length-1;
 		//console.log("Index e': "+index);
-		console.log("[363] :"+lista);
-		document.querySelector("#estraiTutti").removeEventListener("click", estraiTutti);
-		document.querySelector("#estraiTutti").disabled=true;
+		//console.log("[363] :"+lista);
 		document.querySelector("#corpo").style.display='block';
 		
 		document.querySelector("#primoP").innerText=listaPremiArray[0];//.substr(0,80);
@@ -474,6 +516,9 @@ window.addEventListener('load',function(){
 
 	document.querySelector('#estraiTutti').addEventListener('click',estraiTutti);
 	document.querySelector('#reloadPage').addEventListener('click',function(){location.reload();});
+	document.querySelector('#openInstructions').addEventListener('click',function(){
+		window.open('Istruzioni.html','_blank');
+	});
 	//document.querySelector('#openList').addEventListener('click',function(){apriLista();});
 	//document.querySelector('#openListSort').addEventListener('click',function(){apriTabella();});
 	window.addEventListener('keyup',keyControl);

@@ -6,14 +6,11 @@
  * Provided "as-is", free and without warranty
  * Originally written in 2005. Old code ahead.
  *
- * Includes SoundManager 2 API (BSD).
- * http://schillmania.com/projects/soundmanager2/
- *
  * v0.9.1.20110703
 */
 
 /*jslint white: false, onevar: false, undef: true, nomen: false, eqeqeq: false, plusplus: false, bitwise: true, regexp: false, newcap: true, immed: true */
-/*global window, document, navigator, setTimeout, setInterval, clearInterval, enableDebugMode, writeDebug, soundManager, FireworkParticle, attachEvent */
+/*global window, document, navigator, setTimeout, setInterval, clearInterval, enableDebugMode, writeDebug, FireworkParticle, attachEvent */
 
 var fc;
 
@@ -231,10 +228,6 @@ function Firework(oC,startX,startY,burstX,burstY,burstType,nRadius,nParticles,nC
     // attach oncomplete event handler to last particle
     self.particles[i].o.style.display = 'block';
     fc.animator.enqueue(self.particles[i],self.particles[i].animate,self.beginFade);
-    var sID = 'boom'+parseInt(Math.random()*8, 10);
-    if (soundManager.ok()) {
-      soundManager.play(sID, {pan: fc.getPanX(self.x)});
-    }
   };
 
   this.beginFade = function() {
@@ -326,10 +319,6 @@ function Firework(oC,startX,startY,burstX,burstY,burstType,nRadius,nParticles,nC
   self.moveTo(self.x,self.y);
   self.createBurst(nCircles,nParticles,nRadius,burstType); // create an explosion
   self.slideTo(burstX,burstY);
-  var sID = 'fire'+parseInt(Math.random()*2, 10);
-  if (soundManager.ok()) {
-    soundManager.play(sID, {pan: fc.getPanX(self.x)});
-  }
   fc.animator.start();
 
 }
@@ -455,9 +444,6 @@ function FireworkParticle(oC,isRandom,type,baseX,baseY,obeyBoundaries) {
     var f0 = self.tween[0][self.frame].data;
     var f1 = self.tween[1][self.frame].data;
     self.moveTo(f0,f1);
-    // possible bounce event/sound hooks
-    // if (self.tween[0][self.frame].event) soundManager.play(self.tween[0][self.frame].event);
-    // if (self.tween[1][self.frame].event) soundManager.play(self.tween[1][self.frame].event);
     if (self.frame++>=self.tween[0].length-1) {
       if (self._oncomplete) {
         self._oncomplete();
@@ -560,38 +546,6 @@ function createFirework(nRadius,nParticles,nCircles,nBurstType,startX,startY,bur
   fc.fireworks[fc.fireworks.length] = new Firework(document.getElementById('fireContainer'),startX,startY,burstX,burstY,nBurstType,nRadius,nParticles,nCircles,allowRandom,obeyBoundaries);
 
 }
-
-soundManager.url = './swf/';
-soundManager.useHighPerformance = true;
-soundManager.useHTML5Audio = true;
-soundManager.wmode = 'transparent';
-
-soundManager.onready(function() {
-
-  var sounds = {
-    'fire0': 'boom3.mp3',
-    'fire1': 'boom4.mp3',
-    'boom0': 'boom1.mp3',
-    'boom1': 'boom2.mp3',
-    'boom2': 'pop1.mp3',
-    'boom3': 'pop2.mp3',
-    'boom4': 'pop3.mp3',
-    'boom5': 'pop4.mp3',
-    'boom6': 'pop5.mp3',
-    'boom7': 'pop6.mp3'
-  };
-
-  for (var item in sounds) {
-    if (sounds.hasOwnProperty(item)) {
-      soundManager.createSound({
-        id: item,
-        url: 'audio/' + sounds[item],
-        autoLoad: true
-      });
-    }
-  }
-
-});
 
 fc = new FireworksController();
 

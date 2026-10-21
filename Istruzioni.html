@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Istruzioni d'uso - Lotteria</title>
+	<link rel="stylesheet" type="text/css" href="lotteria.css">
+</head>
+<body class="instructionsBody">
+	<main class="instructionsPage">
+		<h1>Istruzioni d'uso</h1>
+		<p>Una guida rapida per preparare e condurre l'estrazione.</p>
+		<div class="instructionsWarning" role="note">
+			<strong>Avvertenza:</strong> questo programma è uno <strong>strumento di estrazione</strong> e non verifica che l'evento sia conforme alle norme applicabili. L'organizzatore è responsabile di informarsi sugli adempimenti previsti per il proprio evento e di provvedere, se richiesti, alle autorizzazioni, alle comunicazioni al Comune e agli altri obblighi applicabili. <strong>Da usare solo per eventi autorizzati.</strong> Il programma è fornito senza garanzie: l'autore non garantisce il funzionamento o l'idoneità del programma per uno specifico evento.
+		</div>
+
+		<h2>1. Prepara l'estrazione</h2>
+		<ol>
+			<li>In <strong>Numero di biglietti venduti</strong> inserisci il numero totale dei biglietti, numerati da 1 fino al numero indicato. Il valore massimo accettato è 15.000.</li>
+			<li>In <strong>Numero di premi</strong> inserisci quanti premi vuoi assegnare.</li>
+			<li>Scrivi la <strong>lista dei premi</strong>, un premio per riga e nell'ordine desiderato. Il numero di righe deve corrispondere al numero dei premi; evita righe vuote alla fine.</li>
+			<li>Se necessario, inserisci in <strong>Numeri nulli</strong> i numeri dei biglietti da escludere, uno per riga. Sono validi i numeri interi compresi tra 1 e il totale dei biglietti; i duplicati vengono contati una volta sola.</li>
+		</ol>
+		<p>Il programma avvisa se i premi richiesti sono più numerosi dei biglietti rimasti dopo le esclusioni.</p>
+
+		<h2>2. Estrai e mostra i numeri</h2>
+		<ol>
+			<li>Premi <strong>Estrai tutto</strong> e attendi il completamento della barra di avanzamento. Il programma prepara l'intera sequenza dei numeri vincenti, senza ripetizioni e rispettando le esclusioni, prima di iniziare a mostrarla.</li>
+			<li>Quando compare <strong>Estrazione attiva</strong>, fai clic nell'area principale della pagina per mostrare il numero successivo. L'estrazione procede dall'ultimo premio fino al primo; i primi tre premi hanno un riquadro dedicato.</li>
+			<li>Dopo ogni numero attendi che l'estrazione torni attiva prima di fare il clic successivo. Per mettere in pausa o riattivare i clic, usa il tasto <strong>F2</strong> oppure fai clic sull'indicatore in alto a destra.</li>
+		</ol>
+
+		<h2>3. Recupera una sessione interrotta</h2>
+		<p>Dopo che è stato mostrato almeno un numero, la sequenza e l'avanzamento vengono salvati nel browser. Se la pagina si chiude o viene ricaricata, riaprila nello stesso browser e profilo, scegli <strong>Recupera ultima sessione</strong> dal menù e conferma. La pagina ricostruisce i numeri già mostrati; poi premi <strong>F2</strong> o fai clic sull'indicatore per riprendere.</p>
+		<p>Se l'interruzione avviene prima di iniziare a mostrare i numeri, scegli <strong>Nuova estrazione</strong> e avvia di nuovo il sorteggio.</p>
+
+		<h2>4. Consulta e conserva le liste</h2>
+		<ul>
+			<li><strong>Apri lista premi</strong> mostra i numeri vincenti nell'ordine dei premi, con la descrizione di ciascun premio.</li>
+			<li><strong>Apri lista ordinata</strong> mostra i numeri vincenti in ordine numerico crescente.</li>
+		</ul>
+		<p>Le liste si attivano quando l'estrazione arriva al primo premio. Per conservarle, apri la lista desiderata e usa la funzione di stampa del browser (di solito <strong>Ctrl+P</strong>); nella finestra di stampa puoi scegliere anche il salvataggio in PDF, se disponibile.</p>
+
+		<div class="instructionsNote">
+			<strong>Consiglio pratico:</strong> durante l'estrazione, una persona può annotare a penna i biglietti man mano che vengono mostrati. Il recupero usa i dati del browser: cancellandoli o cambiando browser o profilo, la sessione salvata potrebbe non essere disponibile.
+		</div>
+
+		<a class="instructionsBack" href="Lotteria.html">Torna alla lotteria</a>
+	</main>
+</body>
+</html>

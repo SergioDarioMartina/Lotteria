@@ -343,4 +343,75 @@ animation: blink 1s linear infinite;
 }
 /*Fine*/
 
+/* Pagina istruzioni */
+.instructionsBody{
+	background:#f3f7f7;
+	color:#263238;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	line-height:1.6;
+	margin:0;
+	padding:24px;
+}
+
+.instructionsPage{
+	background:#fff;
+	border-radius:10px;
+	box-shadow:0 4px 18px rgba(0,0,0,.12);
+	margin:0 auto;
+	max-width:900px;
+	padding:32px 40px;
+}
+
+.instructionsPage h1,
+.instructionsPage h2{
+	color:#00796b;
+}
+
+.instructionsPage h1{
+	line-height:1.2;
+	margin-top:0;
+}
+
+.instructionsPage li{
+	margin-bottom:8px;
+}
+
+.instructionsNote{
+	background:#e0f2f1;
+	border-left:4px solid #009688;
+	margin:20px 0;
+	padding:12px 16px;
+}
+
+.instructionsWarning{
+	background:#fff3e0;
+	border-left:5px solid #e65100;
+	margin:22px 0;
+	padding:14px 18px;
+}
+
+.instructionsBack{
+	background:#009688;
+	border-radius:3px;
+	color:#fff;
+	display:inline-block;
+	font-weight:bold;
+	margin-top:16px;
+	padding:8px 14px;
+	text-decoration:none;
+}
+
+.instructionsBack:hover{
+	background:#00796b;
+}
+
+@media screen and (max-width:600px){
+	.instructionsBody{
+		padding:12px;
+	}
+	.instructionsPage{
+		padding:22px 18px;
+	}
+}
+
 
