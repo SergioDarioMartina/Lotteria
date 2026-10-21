@@ -142,6 +142,9 @@ function randomIndex(maxExclusive) {
 		}
 
 		index=lista.length-1;
+		// Salva subito il prossimo premio da mostrare, così un recupero prima
+		// del primo clic non riutilizza l'indice di una sessione precedente.
+		localStorage.setItem('index',index);
 		//console.log("Index e': "+index);
 		//console.log("[363] :"+lista);
 		document.querySelector("#corpo").style.display='block';
@@ -274,13 +277,13 @@ function randomIndex(maxExclusive) {
 		setTimeout(function () { 
 			panel.classList.remove('panelTemp');
 			panel.style.opacity='0';
-			//for(var u=0;u<lis.length;u++){
+			if (lis.length > 0) {
 				lis[0].classList.remove('liFirst');
 				if(lis[1]){
 					lis[1].querySelector('div').classList.remove('blinking');
 				}
 				lis[0].querySelector('div').classList.add('blinking');
-			//}
+			}
 			/*for(prop in lis) {
 	 			
 				try {
@@ -338,9 +341,9 @@ function randomIndex(maxExclusive) {
 				rullo.play();
 			}
 		},60);
-		var timeRoll=(index<3)?14000:4000;
+		var timeRoll=(index<3)?9000:4000;
 		setTimeout(function () {
-			clearTimeout(roll); 
+			clearInterval(roll);
 
 		/*if(index!=0){
 			setTimeout(function () {
@@ -424,7 +427,7 @@ function recupera(){
 		premiVal=localStorage.getItem('premiVal');
 		lista=localList.lista;
 		listaPremiArray=localList.listaPremi;
-		disabledExtraction();
+		enabledExtraction(1);
 		if(localStorage.getItem('index')<1){
 			document.querySelector('#openList').addEventListener('click',function(){apriLista();});
 			document.querySelector('#openListSort').addEventListener('click',function(){apriTabella();});
