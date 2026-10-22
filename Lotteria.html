@@ -7,9 +7,11 @@ Ultima modifica 25.10.2026
 <html lang='it'> 
 <head>
   <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Martina Sergio">
 <meta name="copyright" content="Lotteria">	
   <title>Lotteria</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <script type="text/javascript" src="lotteria.js"></script>
 <script defer type="text/javascript" src="branding.js"></script>
 <link rel="stylesheet" type="text/css" href="lotteria.css">
@@ -35,8 +37,8 @@ Ultima modifica 25.10.2026
 <div id="control" title="tasto F2">
 
 </div>
-<div id="menu">
-	Men&ugrave;
+<details id="menu">
+	<summary>Men&ugrave;</summary>
   <ul>
    
 	<li><button id="recove">Recupera ultima sessione</button></li>
@@ -45,7 +47,7 @@ Ultima modifica 25.10.2026
 	<li><button id="openListSort" disabled="disabled">Apri lista ordinata</button></li>
 	<li><button id="openInstructions">Istruzioni</button></li>
   </ul>
-</div>
+</details>
   <div id="brandHeader">
 	<img id="brandLogo" class="brandImage" data-brand-logo alt="Logo dell'evento" hidden>
 	<div id="logo" class="col8"><span data-brand-title>Lotteria</span></div>
@@ -72,35 +74,22 @@ Ultima modifica 25.10.2026
 	</tr>
 	<tr>
 	  <td>
-		Numero di biglietti venduti
-	  </td>
-	  <td>
-		Numero di premi
-	  </td>
-	 </tr>
-	 <tr>
-	  <td>
-		<input type="number" id="max" value="100" min="1" max="15000" step="1">
+		 <label class="fieldLabel" for="max">Numero di biglietti venduti</label>
+		 <input type="number" id="max" value="100" min="1" max="15000" step="1">
 	 </td>
-	 
 	  <td>
-		<input type="number" id="premi" value="10" min="1" step="1">
+		 <label class="fieldLabel" for="premi">Numero di premi</label>
+		 <input type="number" id="premi" value="10" min="1" step="1">
 	  </td>
 	</tr>
-	<tr>
-	  <td>
-		Inserisci la lista dei premi
-	  </td>
-	  <td>
-		Numeri nulli
-	  </td>
-	 </tr>
 	 <tr>
 	  <td>
-		 <textarea cols="" rows="15" id="listaPremi"></textarea>
+		 <label class="fieldLabel" for="listaPremi">Inserisci la lista dei premi</label>
+		 <textarea cols="" rows="15" id="listaPremi" placeholder="Inserisci la lista dei premi"></textarea>
 	  </td>
 	  <td>
-		 <textarea cols="" rows="15" id="numeriNulli"></textarea>
+		 <label class="fieldLabel" for="numeriNulli">Numeri nulli</label>
+		 <textarea cols="" rows="15" id="numeriNulli" placeholder="Numeri nulli"></textarea>
 	  </td>
 	</tr>
 	<tr>

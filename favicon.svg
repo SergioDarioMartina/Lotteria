@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="3" y="3" width="58" height="58" rx="13" fill="#004d40"/>
+  <rect x="5" y="5" width="54" height="54" rx="11" fill="#009688" stroke="#f4cf62" stroke-width="3"/>
+  <rect x="10" y="10" width="44" height="44" rx="5" fill="#fffdf4"/>
+  <defs>
+    <clipPath id="reel-window">
+      <rect x="10" y="10" width="44" height="44" rx="5"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#reel-window)" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="21" y="27" font-size="14" fill="#009688" opacity=".28">7</text>
+    <text x="21" y="47" font-size="27" fill="#173b38">1</text>
+    <text x="21" y="66" font-size="14" fill="#009688" opacity=".28">3</text>
+    <text x="43" y="27" font-size="14" fill="#009688" opacity=".28">4</text>
+    <text x="43" y="47" font-size="27" fill="#173b38">2</text>
+    <text x="43" y="66" font-size="14" fill="#009688" opacity=".28">6</text>
+  </g>
+  <path d="M32 11v42" stroke="#d6c891" stroke-width="1.5" opacity=".8"/>
+</svg>

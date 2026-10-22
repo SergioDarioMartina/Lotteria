@@ -75,6 +75,10 @@ border-radius: 5px;
 body { font-size:100%; height:100%}
 html{ font-size:100%; height:100%}
 
+*, *::before, *::after{
+	box-sizing:border-box;
+}
+
 #logo{
     text-align: center;
     /*width: 100%;*/
@@ -114,6 +118,12 @@ html{ font-size:100%; height:100%}
 	margin-bottom:5px;
 }
 
+.fieldLabel{
+	display:block;
+	font-weight:bold;
+	margin-bottom:8px;
+}
+
 #brandTitleInput{
 	box-sizing:border-box;
 	max-width:100%;
@@ -142,28 +152,43 @@ border-radius: 5px;
 background:blue;
 color:#fff;
 cursor:pointer;
-padding:5px;
+padding:0;
 position:fixed;
 top:5px;
+z-index:100;
+}
+
+#menu summary{
+	list-style:none;
+	padding:5px;
+}
+
+#menu summary::-webkit-details-marker{
+	display:none;
 }
 
 #menu ul{
 position: absolute;
 background:#fff;
-left: -20px;
-top: 11px;
+color:#000;
+display:none;
+left:0;
+margin:0;
+padding:8px;
+top:100%;
+width:220px;
+box-sizing:border-box;
+z-index:101;
 }
 
 #menu li{
 list-style:none;
-display:none;
 padding:3px;
 }
 
-#menu:hover li{
-display:block;
-    z-index:1;
-    /*border:1px solid black;*/
+#menu[open] ul,
+#menu:hover ul{
+	display:block;
 }
 
 #control{
@@ -184,14 +209,17 @@ padding:20px;
 -webkit-border-radius: 15px;                  
 -moz-border-radius: 15px;                   
 border-radius: 15px;
-font: bold 15rem Arial;
+font: bold clamp(4rem, 18vw, 15rem) Arial;
 background:blue;
 color:#fff;
 -webkit-transition: .5s ease-in-out;                  
 -moz-transition: .5s ease-in-out;
 position:fixed;
 top: 50%;
-left:25%;
+left:50%;
+transform:translate(-50%, -50%);
+width:min(80vw, 900px);
+z-index:5;
 display:none;
 }
 
@@ -473,6 +501,128 @@ animation: blink 1s linear infinite;
 	}
 	.instructionsPage{
 		padding:22px 18px;
+	}
+}
+
+/* Layout della schermata principale su tablet e telefoni */
+@media screen and (max-width:700px){
+	#header table,
+	#header tbody,
+	#header tr,
+	#header th,
+	#header td{
+		display:block;
+		width:100%;
+	}
+
+	#header table{
+		height:auto;
+		table-layout:fixed;
+	}
+
+	#header td,
+	#header th{
+		box-sizing:border-box;
+	}
+
+	#header td input,
+	#header td textarea{
+		box-sizing:border-box;
+		max-width:100%;
+		width:100%;
+	}
+}
+
+@media screen and (max-width:600px){
+	html,
+	body{
+		height:auto;
+		min-height:100%;
+	}
+
+	body{
+		margin:0;
+		overflow-x:hidden;
+	}
+
+	#menu{
+		left:8px;
+		max-width:calc(100vw - 16px);
+		top:8px;
+	}
+
+	#menu ul{
+		box-sizing:border-box;
+		left:0;
+		margin:0;
+		max-width:calc(100vw - 16px);
+		padding:8px;
+		top:100%;
+		width:min(280px, calc(100vw - 16px));
+	}
+
+	#control{
+		max-width:45vw;
+		right:8px;
+		top:48px;
+		z-index:100;
+	}
+
+	#brandHeader{
+		margin:76px auto 12px;
+		padding:0 12px;
+	}
+
+	#logo{
+		margin-top:0;
+		overflow-wrap:anywhere;
+		width:100%;
+	}
+
+	#header table{
+		width:calc(100% - 24px);
+	}
+
+	#header td,
+	#header th{
+		padding:12px;
+	}
+
+	#header .brandSettings{
+		padding:10px;
+	}
+
+	#header textarea{
+		min-height:160px;
+		resize:vertical;
+	}
+
+	.brandLogoControls button{
+		flex:0 0 auto;
+		width:auto;
+	}
+
+	#panel{
+		font-size:clamp(4rem, 24vw, 10rem);
+		max-width:calc(100vw - 24px);
+		width:calc(100vw - 24px);
+	}
+
+	#primiPremi .primiPremi{
+		font-size:clamp(2rem, 9vw, 3.3rem);
+	}
+
+	.lista{
+		font-size:clamp(2.5rem, 11vw, 5rem);
+		overflow-wrap:anywhere;
+	}
+
+	#list{
+		padding-left:0;
+	}
+
+	button{
+		min-height:44px;
 	}
 }
 
