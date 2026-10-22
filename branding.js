@@ -1,5 +1,6 @@
 (function () {
-	var defaultTitle = 'Lotteria by Gruppo Sportivo Verallia Lonigo';
+	var defaultTitle = 'Lotteria';
+	var previousDefaultTitle = 'Lotteria by Gruppo Sportivo Verallia Lonigo';
 	var titleKey = 'lotteriaBrandingTitle';
 	var logoKey = 'lotteriaBrandingLogo';
 	var maxFileSize = 5 * 1024 * 1024;
@@ -61,6 +62,10 @@
 		var logoInput = document.getElementById('brandLogoInput');
 		var removeLogoButton = document.getElementById('removeBrandLogo');
 		var storedTitle = readSetting(titleKey);
+		if (storedTitle === previousDefaultTitle) {
+			storedTitle = defaultTitle;
+			writeSetting(titleKey, defaultTitle);
+		}
 		var initialTitle = storedTitle !== null ? storedTitle : defaultTitle;
 
 		if (titleInput) {
